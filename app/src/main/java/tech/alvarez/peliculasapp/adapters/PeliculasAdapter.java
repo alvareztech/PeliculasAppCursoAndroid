@@ -1,6 +1,5 @@
 package tech.alvarez.peliculasapp.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,14 +16,7 @@ import tech.alvarez.peliculasapp.MainActivity;
 import tech.alvarez.peliculasapp.R;
 import tech.alvarez.peliculasapp.models.Pelicula;
 
-/**
- * Created on 11/26/16.
- *
- * @author Daniel Alvarez
- */
-
 public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.ViewHolder> {
-
 
     private ArrayList<Pelicula> dataset;
     private Context context;

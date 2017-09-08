@@ -2,11 +2,6 @@ package tech.alvarez.peliculasapp.services;
 
 import java.util.ArrayList;
 
-/**
- * Created on 11/26/16.
- *
- * @author Daniel Alvarez
- */
 public class ActoresRespuesta {
 
     private ArrayList<Actor> cast;

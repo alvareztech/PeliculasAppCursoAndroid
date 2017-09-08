@@ -1,10 +1,5 @@
 package tech.alvarez.peliculasapp.services;
 
-/**
- * Created on 11/26/16.
- *
- * @author Daniel Alvarez
- */
 public class Actor {
 
     private String character;

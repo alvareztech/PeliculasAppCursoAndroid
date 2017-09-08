@@ -1,8 +1,8 @@
 package tech.alvarez.peliculasapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,10 +12,7 @@ import com.bumptech.glide.Glide;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import tech.alvarez.peliculasapp.models.Pelicula;
-import tech.alvarez.peliculasapp.models.PeliculasCineRespuesta;
 import tech.alvarez.peliculasapp.services.TheMovieDatabaseService;
 
 public class PeliculaActivity extends AppCompatActivity {
@@ -33,15 +30,9 @@ public class PeliculaActivity extends AppCompatActivity {
         posterImageView = (ImageView) findViewById(R.id.posterImageView);
         tituloTextView = (TextView) findViewById(R.id.tituloTextView);
 
-         idPelicula = getIntent().getIntExtra("idPelicula", 0);
+        idPelicula = getIntent().getIntExtra("idPelicula", 0);
 
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        TheMovieDatabaseService service = retrofit.create(TheMovieDatabaseService.class);
+        TheMovieDatabaseService service = ServiceGenerator.createService(TheMovieDatabaseService.class);
 
         Call<Pelicula> call = service.obtenerDetallePelicula(idPelicula, "589e10387e0ca4ece633f5836fb0383f");
         call.enqueue(new Callback<Pelicula>() {
@@ -62,14 +53,11 @@ public class PeliculaActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     public void mostrarActores(View view) {
         Intent intent = new Intent(this, ActoresActivity.class);
-        intent.putExtra("idPelicula",  idPelicula);
+        intent.putExtra("idPelicula", idPelicula);
         startActivity(intent);
-
     }
 }

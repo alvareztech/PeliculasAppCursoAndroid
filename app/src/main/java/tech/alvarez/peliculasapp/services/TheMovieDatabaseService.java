@@ -1,6 +1,5 @@
 package tech.alvarez.peliculasapp.services;
 
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -15,10 +14,10 @@ public interface TheMovieDatabaseService {
     Call<PeliculasCineRespuesta> obtenerPeliculasEnCines(@Query("api_key") String apiKey);
 
     @GET("movie/{id}")
-    Call<Pelicula> obtenerDetallePelicula(@Path("id") int id , @Query("api_key") String apiKey);
+    Call<Pelicula> obtenerDetallePelicula(@Path("id") int id, @Query("api_key") String apiKey);
 
 
     @GET("movie/{id}/credits")
-    Call<ActoresRespuesta> obtenerActoresDePelicula(@Path("id") int id , @Query("api_key") String apiKey);
+    Call<ActoresRespuesta> obtenerActoresDePelicula(@Path("id") int id, @Query("api_key") String apiKey);
 
 }

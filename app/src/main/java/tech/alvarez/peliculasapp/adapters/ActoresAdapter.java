@@ -1,6 +1,5 @@
 package tech.alvarez.peliculasapp.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,18 +12,10 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-import tech.alvarez.peliculasapp.MainActivity;
 import tech.alvarez.peliculasapp.R;
 import tech.alvarez.peliculasapp.services.Actor;
 
-/**
- * Created on 11/26/16.
- *
- * @author Daniel Alvarez
- */
-
 public class ActoresAdapter extends RecyclerView.Adapter<ActoresAdapter.ViewHolder> {
-
 
     private ArrayList<Actor> dataset;
     private Context context;

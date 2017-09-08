@@ -1,19 +1,16 @@
 package tech.alvarez.peliculasapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import tech.alvarez.peliculasapp.adapters.OnPeliculaItemClickListener;
 import tech.alvarez.peliculasapp.adapters.PeliculasAdapter;
 import tech.alvarez.peliculasapp.models.Pelicula;
@@ -29,18 +26,11 @@ public class MainActivity extends AppCompatActivity implements OnPeliculaItemCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         peliculasRecyclerView = (RecyclerView) findViewById(R.id.peliculasRecyclerView);
         peliculasRecyclerView.setHasFixedSize(true);
         peliculasRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        TheMovieDatabaseService service = retrofit.create(TheMovieDatabaseService.class);
+        TheMovieDatabaseService service = ServiceGenerator.createService(TheMovieDatabaseService.class);
 
         Call<PeliculasCineRespuesta> call = service.obtenerPeliculasEnCines("589e10387e0ca4ece633f5836fb0383f");
 
@@ -57,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements OnPeliculaItemCli
                 peliculasRecyclerView.setAdapter(adaptador);
 
 
-
             }
 
             @Override
@@ -70,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements OnPeliculaItemCli
 
     @Override
     public void onPeliculaItemClick(Pelicula p) {
-        Intent intent  = new Intent(this, PeliculaActivity.class);
+        Intent intent = new Intent(this, PeliculaActivity.class);
         intent.putExtra("idPelicula", p.getId());
         startActivity(intent);
     }
